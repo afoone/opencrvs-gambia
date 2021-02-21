@@ -18,7 +18,6 @@ if [ "$DEV" = "true" ]; then
   echo "Working in DEV mode"
 else
   HOST=rs0/mongo1,mongo2,mongo3
-  NETWORK=opencrvs_overlay_net
 fi
 
 docker run --rm -v $DIR/backups:/backups --network=$NETWORK mongo:3.6 bash \

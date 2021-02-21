@@ -26,7 +26,7 @@ services:
     image: opencrvs/ocrvs-zambia:latest
     restart: unless-stopped
     secrets:
-      - jwt-public-key.{{ts}}
+      - jwt-public-key.1613814360
     environment:
       - NODE_ENV=production
       - FHIR_URL=http://hearth:3447/fhir
@@ -34,18 +34,18 @@ services:
       - OPENHIM_URL=http://openhim-core:5001
       - CONFIRM_REGISTRATION_URL=http://workflow:5050/confirm/registration
       - CHECK_INVALID_TOKEN=true
-      - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{ts}}
+      - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.1613814360
       - MONGO_URL=mongodb://mongo1,mongo2,mongo3/user-mgnt?replicaSet=rs0
       - HOSTNAME=${HOSTNAME}
 
   chatbot-mediator:
     image: opencrvs/ocrvs-chatbot-mediator
     secrets:
-      - jwt-public-key.{{ts}}
+      - jwt-public-key.1613814360
       - openhim-user
       - openhim-password
     environment:
-      - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{ts}}
+      - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.1613814360
       - AUTH_URL=http://auth:4040
       - FHIR_URL=http://openhim-core:5001/fhir
       - OPENHIM_USER_PATH=/run/secrets/openhim-user
@@ -70,7 +70,7 @@ services:
       - LANGUAGES=en
 
 secrets:
-  jwt-public-key.{{ts}}:
+  jwt-public-key.1613814360:
     external: true
   openhim-user:
     external: true
